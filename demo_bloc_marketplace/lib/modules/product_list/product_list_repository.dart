@@ -5,8 +5,8 @@ import 'package:demo_bloc_marketplace/utils/HttpException.dart';
 import 'package:demo_bloc_marketplace/utils/api.dart';
 import 'package:demo_bloc_marketplace/shared/base_repository.dart';
 
-class MarketplaceRepository extends BaseRepository {
-  MarketplaceRepository();
+class ProductListRepository extends BaseRepository {
+  ProductListRepository();
 
   Future<List<Product>> getProductList() async {
     final response = await client

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../common_widgets/app_text_field.dart';
-import '../marketplace/marketplace_screen.dart';
+import '../product_list/product_list_screen.dart';
 import 'login_bloc.dart';
 import 'login_repository.dart';
 
@@ -43,7 +43,7 @@ class _LoginViewState extends State<LoginView> {
         listener: (context, state) {
           if (state is LoginSuccess) {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => MarketplaceScreen(),
+              builder: (context) => ProductListScreen(),
             ));
           } else if (state is LoginFailure) {
             Utils.showDefaultDialog(

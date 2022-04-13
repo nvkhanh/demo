@@ -1,15 +1,16 @@
-import 'package:demo_bloc_marketplace/modules/marketplace/marketplace_repository.dart';
+import 'package:demo_bloc_marketplace/modules/product_list/product_list_bloc.dart';
+import 'package:demo_bloc_marketplace/modules/product_list/product_list_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../models/product.dart';
 import '../../utils/utils.dart';
-import 'marketplace_bloc.dart';
+
 import 'widgets/product_tile.dart';
 
-class MarketplaceScreen extends StatelessWidget {
-  MarketplaceScreen({Key? key}) : super(key: key);
-  final apiRepository = MarketplaceRepository();
+class ProductListScreen extends StatelessWidget {
+  ProductListScreen({Key? key}) : super(key: key);
+  final apiRepository = ProductListRepository();
 
   @override
   Widget build(BuildContext context) {

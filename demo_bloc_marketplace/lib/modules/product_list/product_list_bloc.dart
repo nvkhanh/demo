@@ -1,5 +1,5 @@
 import 'package:demo_bloc_marketplace/models/product.dart';
-import 'package:demo_bloc_marketplace/modules/marketplace/marketplace_repository.dart';
+import 'package:demo_bloc_marketplace/modules/product_list/product_list_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../utils/HttpException.dart';
@@ -27,7 +27,7 @@ class MarketplaceSuccess extends MarketplaceState {
 }
 
 class MarketplaceBloc extends Bloc<MarketplaceEvent, MarketplaceState> {
-  final MarketplaceRepository repository;
+  final ProductListRepository repository;
 
   MarketplaceBloc(this.repository) : super(MarketplaceInitial()) {
     on<GetProductListEvent>(
