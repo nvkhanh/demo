@@ -111,7 +111,7 @@ class _MarketplaceViewState extends State<MarketplaceView> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => ProductDetail(
-                                product: product,
+                                id: product.id.toString(),
                               )),
                     );
                   },
