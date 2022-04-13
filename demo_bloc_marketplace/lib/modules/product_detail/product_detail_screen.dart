@@ -1,18 +1,14 @@
+import 'package:demo_bloc_marketplace/models/product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail(
-      {Key? key,
-      required this.imgUrl,
-      required this.name,
-      required this.price,
-      required this.imgHeight})
-      : super(key: key);
-  final String imgUrl;
-  final String name;
-  final double price;
-  final double imgHeight;
+  const ProductDetail({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+  final Product product;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +29,7 @@ class ProductDetail extends StatelessWidget {
             height: MediaQuery.of(context).size.height * .35,
             padding: const EdgeInsets.only(bottom: 30),
             width: double.infinity,
-            child: Image.network(imgUrl),
+            child: Image.network(product.image),
           ),
           Expanded(
               child: Stack(
@@ -62,7 +58,7 @@ class ProductDetail extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              name,
+                              product.title,
                               overflow: TextOverflow.clip,
                               style: const TextStyle(
                                 fontSize: 22,
@@ -74,7 +70,7 @@ class ProductDetail extends StatelessWidget {
                             width: 10,
                           ),
                           Text(
-                            '\$' + price.toString(),
+                            '\$' + product.price.toString(),
                             style: const TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w600,

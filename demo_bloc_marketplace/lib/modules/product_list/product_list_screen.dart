@@ -111,10 +111,7 @@ class _MarketplaceViewState extends State<MarketplaceView> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => ProductDetail(
-                                name: product.title,
-                                price: product.price,
-                                imgUrl: product.image,
-                                imgHeight: height / 8,
+                                product: product,
                               )),
                     );
                   },
