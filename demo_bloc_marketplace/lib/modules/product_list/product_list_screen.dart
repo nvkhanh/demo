@@ -1,3 +1,4 @@
+import 'package:demo_bloc_marketplace/modules/product_detail/product_detail_screen.dart';
 import 'package:demo_bloc_marketplace/modules/product_list/product_list_bloc.dart';
 import 'package:demo_bloc_marketplace/modules/product_list/product_list_repository.dart';
 import 'package:flutter/material.dart';
@@ -105,7 +106,15 @@ class _MarketplaceViewState extends State<MarketplaceView> {
                   price: product.price,
                   imgUrl: product.image,
                   imgHeight: height / 8,
-                  onItemClicked: () {},
+                  onItemClicked: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProductDetail(
+                                id: product.id.toString(),
+                              )),
+                    );
+                  },
                 ))
             .toList(),
       );
