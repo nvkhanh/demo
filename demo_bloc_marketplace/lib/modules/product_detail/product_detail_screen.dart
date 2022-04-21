@@ -27,7 +27,6 @@ class ProductDetail extends StatelessWidget {
                 Navigator.pop(context);
               },
               icon: const Icon(Icons.arrow_back_ios)),
-          //actions: [IconButton(onPressed: () {}, icon: Icon(Icons.shopping_bag))],
         ),
         body:  buildProductDetail(product: product),
       ),
@@ -58,7 +57,12 @@ class _buildProductDetailState extends State<buildProductDetail> {
       if (state is ProductDetailSuccess) {
         widget.product = state.product;
       }
-      return _buildWidgetProductDetail(widget.product, context);
+      return RefreshIndicator(onRefresh:() async {
+
+        BlocProvider.of<ProductDetailBloc>(context).add(
+          GetProductDetailEvent(),
+        );
+      },child: SingleChildScrollView(child: _buildWidgetProductDetail(widget.product, context)));
     }, listener: (context, state) {
       if (state is ProductDetailFailure) {
         Utils.showDefaultDialog(
@@ -70,6 +74,7 @@ class _buildProductDetailState extends State<buildProductDetail> {
 
 Widget _buildWidgetProductDetail(Product product, BuildContext context) {
   return Column(
+    mainAxisSize: MainAxisSize.min,
     children: [
       Container(
         height: MediaQuery.of(context).size.height * .35,
@@ -77,8 +82,9 @@ Widget _buildWidgetProductDetail(Product product, BuildContext context) {
         width: double.infinity,
         child: Image.network(product.image),
       ),
-      Expanded(
-          child: Stack(
+  Flexible(
+    fit: FlexFit.loose,
+  child: Stack(
         children: [
           Container(
             padding: const EdgeInsets.only(top: 40, right: 14, left: 14),
@@ -141,7 +147,6 @@ Widget _buildWidgetProductDetail(Product product, BuildContext context) {
                     ),
                   ),
                   const SizedBox(height: 15),
-
                 ],
               ),
             ),
